@@ -182,7 +182,7 @@ echo -e "${CYAN}1. Download and install GPG key:${NC}"
 echo -e "${YELLOW}   wget -qO - https://$SERVER_NAME/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/$REPO_NAME.gpg${NC}"
 echo
 echo -e "${CYAN}2. Add repository with signed-by:${NC}"
-echo -e "${YELLOW}   echo \"deb [signed-by=/etc/apt/trusted.gpg.d/$REPO_NAME.gpg] https://$SERVER_NAME $REPO_DISTRIBUTION $REPO_COMPONENT\" | sudo tee /etc/apt/sources.list.d/$REPO_NAME.list${NC}"
+echo -e "${YELLOW}   echo \"deb [arch=$REPO_ARCHITECTURE signed-by=/etc/apt/trusted.gpg.d/$REPO_NAME.gpg] https://$SERVER_NAME $REPO_DISTRIBUTION $REPO_COMPONENT\" | sudo tee /etc/apt/sources.list.d/$REPO_NAME.list${NC}"
 echo
 echo -e "${CYAN}3. Update package lists:${NC}"
 echo -e "${YELLOW}   sudo apt update${NC}"

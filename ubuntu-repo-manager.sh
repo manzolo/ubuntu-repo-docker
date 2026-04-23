@@ -310,7 +310,7 @@ show_client_config() {
     echo -e "${YELLOW}   wget -qO - http://$server_name/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/$REPO_NAME.gpg${NC}"
     echo
     echo -e "${CYAN}2. Add repository with signed-by:${NC}"
-    echo -e "${YELLOW}   echo \"deb [signed-by=/etc/apt/trusted.gpg.d/$REPO_NAME.gpg] http://$server_name $REPO_DISTRIBUTION $REPO_COMPONENT\" | sudo tee /etc/apt/sources.list.d/$REPO_NAME.list${NC}"
+    echo -e "${YELLOW}   echo \"deb [arch=$REPO_ARCHITECTURE signed-by=/etc/apt/trusted.gpg.d/$REPO_NAME.gpg] http://$server_name $REPO_DISTRIBUTION $REPO_COMPONENT\" | sudo tee /etc/apt/sources.list.d/$REPO_NAME.list${NC}"
     echo
     echo -e "${CYAN}3. Update package lists:${NC}"
     echo -e "${YELLOW}   sudo apt update${NC}"
@@ -336,7 +336,7 @@ setup_wizard() {
     fi
 
     # Get distribution
-    echo -e "${CYAN}Ubuntu distribution (focal/jammy/noble, default: focal):${NC}"
+    echo -e "${CYAN}Ubuntu distribution (focal/jammy/noble/resolute, default: focal):${NC}"
     read -r input
     if [ -n "$input" ]; then
         REPO_DISTRIBUTION="$input"

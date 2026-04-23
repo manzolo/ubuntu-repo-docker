@@ -53,7 +53,7 @@ On client machines:
 wget -qO - http://your-server.com/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/myrepo.gpg
 
 # Add repository with signed-by
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/myrepo.gpg] http://your-server.com focal main" | sudo tee /etc/apt/sources.list.d/myrepo.list
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/myrepo.gpg] http://your-server.com focal main" | sudo tee /etc/apt/sources.list.d/myrepo.list
 
 # Update and install
 sudo apt update
@@ -113,7 +113,7 @@ Default configuration can be customized in the setup wizard:
 
 - **Repository Name**: Default `myrepo`
 - **Distribution**: Default `focal` (Ubuntu 20.04)
-  - Other options: `jammy` (22.04), `noble` (24.04), `bionic` (18.04)
+  - Other options: `jammy` (22.04), `noble` (24.04), `resolute` (26.04), `bionic` (18.04)
 - **Component**: Default `main`
 - **Architecture**: Default `amd64`
 - **Base Directory**: Default `/var/www/ubuntu-repo`
@@ -307,7 +307,7 @@ sudo ./ubuntu-repo_manager.sh add hello_1.0.deb
 
 # 4. On client machine
 wget -qO - http://my-server.com/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/myrepo.gpg
-echo "deb [signed-by=/etc/apt/trusted.gpg.d/myrepo.gpg] http://my-server.com focal main" | sudo tee /etc/apt/sources.list.d/myrepo.list
+echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/myrepo.gpg] http://my-server.com focal main" | sudo tee /etc/apt/sources.list.d/myrepo.list
 sudo apt update
 sudo apt install hello
 
